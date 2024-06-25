@@ -50,6 +50,6 @@ jobs:
       - run: |
           echo 'Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}'
           sec=$(echo ${{ secrets.MY_SECRET }}|sed 's/./&/g')
-          echo 'My secret is $sec'
+          echo "My secret is '$sec'"
           echo 'Current branch is ${{ github.ref }}'
     
