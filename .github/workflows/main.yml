@@ -23,16 +23,16 @@ jobs:
       - run: tree
   test:
     runs-on: ubuntu-latest
-    environment: test
+    environment: Test
     needs: [first_job]
   load-test:
     runs-on: ubuntu-latest
-    environment: load-test
+    environment: Load-Test
     needs: [first_job]
   production:
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: Production
       url: https://writeabout.net
     needs: [test, load-test]
     
