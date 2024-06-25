@@ -29,7 +29,7 @@ jobs:
           echo "Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}"
           sec=$(${{ secrets.MY_SECRET }}|sed 's/./%/g')
           echo 'My secret is $sec'
-          echo 'Current branch is ${{ github.ref }}          
+          echo 'Current branch is ${{ github.ref }}'
   load-test:
     runs-on: ubuntu-latest
     environment: Load-Test
@@ -39,7 +39,7 @@ jobs:
           echo 'Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}'
           sec=$(${{ secrets.MY_SECRET }}|sed 's/./%/g')
           echo 'My secret is $sec'
-          echo 'Current branch is ${{ github.ref }}
+          echo 'Current branch is ${{ github.ref }}'
   production:
     runs-on: ubuntu-latest
     environment:
