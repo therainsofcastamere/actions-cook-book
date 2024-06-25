@@ -14,9 +14,25 @@ jobs:
       - name: Greet the user
         run: |
           echo "Hello ${{ vars.WHO_TO_GREET }} ,from ${{ github.actor }}!"
-          echo 'My secret is ${{ secrets.MY_SECRET }}'
+          sec $(${{ secrets.MY_SECRET }}|sed 's/./%/g')
+          echo 'My secret is $sec'
           echo "Current branch is ${{ github.ref }}"
         shell: bash
       - name: Checkout
         uses: actions/checkout@v4.1.7
       - run: tree
+  test:
+    runs-on: ubuntu-latest
+    environment: test
+    needs: [first_job]
+  load-test:
+    runs-on: ubuntu-latest
+    environment: load-test
+    needs: [first_job]
+  production:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://writeabout.net
+    needs: [test, load-test]
+    
