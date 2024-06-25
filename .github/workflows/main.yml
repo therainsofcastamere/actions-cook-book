@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Greet the user
         run: |
-          echo "Hello ${{ vars.WHO_TO_GREET }} ,from ${{ github.actor }}!"
+          echo "Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}!"
           sec $(${{ secrets.MY_SECRET }}|sed 's/./%/g')
           echo 'My secret is $sec'
           echo "Current branch is ${{ github.ref }}"
@@ -25,14 +25,32 @@ jobs:
     runs-on: ubuntu-latest
     environment: Test
     needs: [first_job]
+    steps:
+      - run: |
+          echo "Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}"
+          sec $(${{ secrets.MY_SECRET }}|sed 's/./%/g')
+          echo 'My secret is $sec'
+          echo 'Current branch is ${{ github.ref }}          
   load-test:
     runs-on: ubuntu-latest
     environment: Load-Test
     needs: [first_job]
+    steps:
+      - run: |
+          echo 'Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}'
+          sec $(${{ secrets.MY_SECRET }}|sed 's/./%/g')
+          echo 'My secret is $sec'
+          echo 'Current branch is ${{ github.ref }}
   production:
     runs-on: ubuntu-latest
     environment:
       name: Production
       url: https://writeabout.net
     needs: [test, load-test]
+    steps:
+      - run: |
+          echo 'Hello ${{ vars.WHO_TO_GREET }}, from ${{ github.actor }}'
+          sec $(${{ secrets.MY_SECRET }}|sed 's/./%/g')
+          echo 'My secret is $sec'
+          echo 'Current branch is ${{ github.ref }}'
     
