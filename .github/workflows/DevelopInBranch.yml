@@ -11,6 +11,8 @@ jobs:
             echo "Workflow triggered in branch '${{ github.ref }}'"
             echo "Workflow triggered by event '${{ github.actor }}'"
             echo "Workflow triggered by actor '${{ github.actor }}'"
+      - run: 
+          echo "${{ github.event.pull_request.title }}"
       - uses: actions/checkout@v4.1.7
       - uses: devops-actions/actionlint@v0.1.3
-      - run: echo "${{ github.event.pull_request.title }}"
+      
