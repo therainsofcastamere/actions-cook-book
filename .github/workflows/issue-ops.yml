@@ -30,35 +30,35 @@ jobs:
             message="Requested repository '$repo_full_name' will be sent for approval."
             exitcode=0
 
-            # shall not be empty
-            if [ -z $repo_full_name ]; then
-                message="Repository name is empty.";
-                exitcode=1;
-            fi;
+            # # shall not be empty
+            # if [ -z $repo_full_name ]; then
+            #     message="Repository name is empty.";
+            #     exitcode=1;
+            # fi;
 
-            # shall be alphanumeric and minus only
-            if [[ "$repo_full_name" =~ [^\-a-zA-Z0-9] ]]; then 
-                message="Repository name shall be alphanumeric and minus only.";
-                exitcode=1;
-            fi;
+            # # shall be alphanumeric and minus only
+            # if [[ "$repo_full_name" =~ [^\-a-zA-Z0-9] ]]; then 
+            #     message="Repository name shall be alphanumeric and minus only.";
+            #     exitcode=1;
+            # fi;
                         
-            # shall not start with minus
-            if [[ "$repo_full_name" == -* ]]; then
-                message="Repository name shall not start with minus.";
-                exitcode=1;
-            fi;
+            # # shall not start with minus
+            # if [[ "$repo_full_name" == -* ]]; then
+            #     message="Repository name shall not start with minus.";
+            #     exitcode=1;
+            # fi;
 
-            # shall not end with minus
-            if [[ "$repo_full_name" == *- ]]; then
-                message="Repository name shall not end with minus.";
-                exitcode=1;
-            fi;
+            # # shall not end with minus
+            # if [[ "$repo_full_name" == *- ]]; then
+            #     message="Repository name shall not end with minus.";
+            #     exitcode=1;
+            # fi;
 
-            if [ $exitcode -ne 0 ]; then
-              gh issue edit ${{ github.event.issue.number }} --remove-label repo-request
-              message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
-            fi;
+            # if [ $exitcode -ne 0 ]; then
+            #   gh issue edit ${{ github.event.issue.number }} --remove-label repo-request
+            #   message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
+            # fi;
 
-            gh issue comment "${{ github.event.issue.number }}" -b "$mention $message" --repo "${{ github.event.repository.full_name }}"
-            exit $exitcode
+            # gh issue comment "${{ github.event.issue.number }}" -b "$mention $message" --repo "${{ github.event.repository.full_name }}"
+            # exit $exitcode
         
