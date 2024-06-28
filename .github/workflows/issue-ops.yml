@@ -54,7 +54,7 @@ jobs:
                 exitcode=1;
             fi;
 
-            if [ exitcode -ne 0 ]; then
+            if [ $exitcode -ne 0 ]; then
               gh issue edit ${{ github.event.issue.number }} --remove-label repo-request
               message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
             fi;
