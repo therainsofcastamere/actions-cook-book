@@ -36,11 +36,11 @@ jobs:
                 exitcode=1;
             fi;
 
-            # # shall be alphanumeric and minus only
-            # if [[ "$repo_full_name" =~ [^\-a-zA-Z0-9] ]]; then 
-            #     message="Repository name shall be alphanumeric and minus only.";
-            #     exitcode=1;
-            # fi;
+            # shall be alphanumeric and minus only
+            if [[ "$repo_full_name" =~ [^\-a-zA-Z0-9] ]]; then 
+                message="Repository name shall be alphanumeric and minus only.";
+                exitcode=1;
+            fi;
                         
             # # shall not start with minus
             # if [[ "$repo_full_name" == -* ]]; then
