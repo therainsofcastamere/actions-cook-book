@@ -14,8 +14,8 @@ body:
       label: 'Name'
       description: 'Name of the repository on lower-case and kebab casing'
       placeholder: 'your-name-kebab'
-      validations:
-        required: true
+    validations:
+      required: true
   - type: dropdown
     id: department
     attributes:
@@ -26,5 +26,5 @@ body:
         - dep1
         - dep2
       default: 0
-      validations:
-        required: true
+    validations:
+      required: true
