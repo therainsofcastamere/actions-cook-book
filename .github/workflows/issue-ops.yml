@@ -42,17 +42,17 @@ jobs:
                 exitcode=1;
             fi;
                         
-            # # shall not start with minus
-            # if [[ "$repo_full_name" == -* ]]; then
-            #     message="Repository name shall not start with minus.";
-            #     exitcode=1;
-            # fi;
+            # shall not start with minus
+            if [[ "$repo_full_name" == -* ]]; then
+                message="Repository name shall not start with minus.";
+                exitcode=1;
+            fi;
 
-            # # shall not end with minus
-            # if [[ "$repo_full_name" == *- ]]; then
-            #     message="Repository name shall not end with minus.";
-            #     exitcode=1;
-            # fi;
+            # shall not end with minus
+            if [[ "$repo_full_name" == *- ]]; then
+                message="Repository name shall not end with minus.";
+                exitcode=1;
+            fi;
 
             if [ $exitcode -ne 0 ]; then
               gh issue edit ${{ github.event.issue.number }} --remove-label repo-request --repo "${{ github.event.repository.full_name }}"
