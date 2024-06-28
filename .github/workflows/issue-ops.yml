@@ -59,6 +59,6 @@ jobs:
               message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
             fi;
 
-            gh issue comment ${{ github.event.issue.number }} -b ,,$mention $message
+            gh issue comment "${{ github.event.issue.number }}" -b "$mention $message" --repo "${{ github.event.repository.full_name }}"
             exit $exitcode
         
